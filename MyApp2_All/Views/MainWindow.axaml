@@ -1,0 +1,14 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:MyApp2.ViewModels"
+        x:Class="MyApp2.MainWindow"
+        xmlns:local="clr-namespace:MyApp2"
+        x:DataType="vm:MainWindowViewModel"
+        Title="MyApp2" Width="800" Height="800">
+
+  <Window.DataTemplates>
+    <local:ViewLocator />
+  </Window.DataTemplates>
+
+  <ContentControl Content="{Binding Content}" />
+</Window>

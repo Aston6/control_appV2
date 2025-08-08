@@ -1,0 +1,41 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:MyApp2.ViewModels"
+             x:Class="MyApp2.Views.MainView"
+             x:DataType="vm:MainViewModel"
+             >
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.ColumnSpan="2" Background="#2C3E50">
+            <TextBlock Text="Control Panel" 
+                       Foreground="White" 
+                       FontSize="28" 
+                       VerticalAlignment="Center" 
+                       Margin="20,0,0,0"/>
+        </Border>
+
+        <Border Grid.Row="1" Background="#34495E">
+            <StackPanel Margin="0">
+                <Button Content="Dashboard" Command="{Binding NavigateToDashboardCommand}" Width="200" Foreground="White" FontSize="18" />
+                <Button Content="Settings" Command="{Binding NavigateToSettingsCommand}" Width="200" Foreground="White" FontSize="18" />
+                <Button Content="Users" Command="{Binding NavigateToUsersCommand}" Width="200" Foreground="White" FontSize="18" />
+                <Button Content="Reports" Command="{Binding NavigateToReportsCommand}" Width="200" Foreground="White" FontSize="18" />
+                <Button Content="Control Panel" Command="{Binding NavigateToControlPanelCommand}" Width="200" Foreground="White" FontSize="18" />
+            </StackPanel>
+        </Border>
+
+
+        <Border Grid.Column="1" Grid.Row="1" Background="#ECF0F1" Margin="10">
+            <ContentControl Content="{Binding CurrentView}" />
+        </Border>
+    </Grid>
+</UserControl>

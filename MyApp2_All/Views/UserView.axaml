@@ -1,0 +1,43 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:MyApp2.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
+             x:Class="MyApp2.Views.UsersView"
+             x:DataType="vm:UsersViewModel">
+    <Design.DataContext>
+        <!-- This is for design-time preview only. In runtime, the DataContext will be set via DI or code. -->
+        <vm:UsersViewModel />
+    </Design.DataContext>
+    <Grid RowDefinitions="Auto, Auto, *, Auto" Margin="10">
+        <!-- Title -->
+        <TextBlock Grid.Row="0" Text="User Management" FontSize="24" FontWeight="Bold" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+
+        <!-- Add User Section -->
+        <StackPanel Grid.Row="1" Orientation="Vertical" Spacing="5" Margin="0,0,0,10">
+            <TextBlock Text="Add New User" FontWeight="SemiBold"/>
+            <TextBox Watermark="Username" Text="{Binding NewUsername}" />
+            <TextBox Watermark="Password" Text="{Binding NewPassword}" PasswordChar="*" />
+            <Button Content="Add User" Command="{Binding AddUserCommand}" HorizontalAlignment="Stretch" />
+        </StackPanel>
+
+        <!-- Users List Section -->
+        <StackPanel Grid.Row="2" Orientation="Vertical" Spacing="5">
+            <TextBlock Text="Existing Users" FontWeight="SemiBold"/>
+            <ListBox ItemsSource="{Binding Users}"
+                     SelectedItem="{Binding SelectedUser}"
+                     Height="200"
+                     BorderBrush="LightGray"
+                     BorderThickness="1"
+                     CornerRadius="5">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Username}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button Content="Remove Selected User" Command="{Binding RemoveUserCommand}" HorizontalAlignment="Stretch" Margin="0,5,0,0"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
