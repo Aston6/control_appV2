@@ -10,6 +10,15 @@ namespace MyApp2.ViewModels
     public class ControlPanelViewModel : ViewModelBase
     {
         // private MotionPara _motionPara = new MotionPara();
+        private MotionPara _motionPara = new MotionPara
+        {
+            Vel = 50,
+            Acc = 1000,
+            Pos = 100,
+            Mode = 0, // Jog mode
+            Scale = 1000,
+            Smoth = 0
+        };
 
 
         public ICommand MoveFrontCommand { get; }
