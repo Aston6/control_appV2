@@ -2,14 +2,14 @@ using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GC.Frame.Motion.Privt;
+// using GC.Frame.Motion.Privt;
 using MyApp2.Services;
 
 namespace MyApp2.ViewModels
 {
     public class ControlPanelViewModel : ViewModelBase
     {
-        private MotionPara _motionPara = new MotionPara();
+        // private MotionPara _motionPara = new MotionPara();
 
 
         public ICommand MoveFrontCommand { get; }
