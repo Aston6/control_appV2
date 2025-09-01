@@ -3,9 +3,10 @@ using CommunityToolkit.Mvvm.Input;
 using Avalonia.Media.Imaging;
 using MyApp2.Services;
 using System.IO;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using System;
 using System.Windows.Input;
+using System;
 
 namespace MyApp2.ViewModels
 {
@@ -17,22 +18,18 @@ namespace MyApp2.ViewModels
         // Save inside project folder
         private readonly string _imageFolder = Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "Images");
 
-        private readonly string _imageFileName = "saved_image.png";
-
         [ObservableProperty]
-        private Bitmap? selectedImage;
+        private ObservableCollection<Bitmap> images = new ObservableCollection<Bitmap>();
 
         public BuyListViewModel(IImagePickerService imagePicker)
         {
             _imagePicker = imagePicker;
 
-            // Ensure the folder exists in the project
             Directory.CreateDirectory(_imageFolder);
 
-            // Load previously saved image
-            LoadSavedImage();
+            // Load previously saved images
+            LoadSavedImages();
 
-            // Command
             UploadImageCommand = new RelayCommand(async () => await UploadImageAsync());
         }
 
@@ -41,24 +38,23 @@ namespace MyApp2.ViewModels
             var path = await _imagePicker.PickImageAsync();
             if (path != null && File.Exists(path))
             {
-                var destPath = Path.Combine(_imageFolder, _imageFileName);
+                // Create unique filename for each image
+                var fileName = $"image_{DateTime.Now:yyyyMMddHHmmss}.png";
+                var destPath = Path.Combine(_imageFolder, fileName);
 
-                // Copy image to project folder
                 File.Copy(path, destPath, true);
 
-                // Load the image
-                SelectedImage = new Bitmap(destPath);
+                // Add to the list
+                Images.Add(new Bitmap(destPath));
             }
-            Console.WriteLine("Image folder: " + _imageFolder);
-
         }
 
-        private void LoadSavedImage()
+        private void LoadSavedImages()
         {
-            var savedPath = Path.Combine(_imageFolder, _imageFileName);
-            if (File.Exists(savedPath))
+            var files = Directory.GetFiles(_imageFolder, "*.png");
+            foreach (var file in files)
             {
-                SelectedImage = new Bitmap(savedPath);
+                Images.Add(new Bitmap(file));
             }
         }
     }
