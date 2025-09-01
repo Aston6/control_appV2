@@ -30,6 +30,7 @@
                 <Button Content="Users" Command="{Binding NavigateToUsersCommand}" Width="200" Foreground="White" FontSize="18" />
                 <Button Content="Reports" Command="{Binding NavigateToReportsCommand}" Width="200" Foreground="White" FontSize="18" />
                 <Button Content="Control Panel" Command="{Binding NavigateToControlPanelCommand}" Width="200" Foreground="White" FontSize="18" />
+                <Button Content="Buy List" Command="{Binding NavigateToBuyListCommand}" Width="200" Foreground="White" FontSize="18" />
             </StackPanel>
         </Border>
 

@@ -15,10 +15,12 @@ namespace MyApp2.ViewModels
     public ICommand NavigateToUsersCommand { get; }
     public ICommand NavigateToReportsCommand { get; }
     public ICommand NavigateToControlPanelCommand{ get; }
+    public ICommand NavigateToBuyListCommand{ get; }
 
         public MainViewModel(IRootNavigationService navigation, IServiceProvider services)
         {
             _navigation = navigation;
+
 
             NavigateToDashboardCommand = new RelayCommand(() =>
                 CurrentView = services.GetRequiredService<DashboardViewModel>());
@@ -33,6 +35,9 @@ namespace MyApp2.ViewModels
                 CurrentView = services.GetRequiredService<ReportsViewModel>());
             NavigateToControlPanelCommand = new RelayCommand(() =>
                 CurrentView = services.GetRequiredService<ControlPanelViewModel>());
+
+            NavigateToBuyListCommand = new RelayCommand(() =>
+               CurrentView = services.GetRequiredService<BuyListViewModel>());
         }
 
         private ViewModelBase? _currentView;

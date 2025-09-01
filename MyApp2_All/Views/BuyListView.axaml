@@ -1,0 +1,45 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="clr-namespace:MyApp2.ViewModels"
+    x:Class="MyApp2.Views.BuyListView"
+    x:DataType="vm:BuyListViewModel">
+    
+    <UserControl.Resources>
+    <vm:NullToBoolConverter x:Key="NullToBoolConverter"/>
+</UserControl.Resources>
+
+
+    <Grid RowDefinitions="Auto,*" Margin="10">
+        <!-- First section: title -->
+        <TextBlock Text="BuyList Page" FontSize="24" HorizontalAlignment="Center" Grid.Row="0"/>
+
+        <!-- Second section: upload button and image -->
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Spacing="10" Grid.Row="1">
+            <Button Command="{Binding UploadImageCommand}"
+        Width="150" Height="150"
+        Background="LightGray"
+        BorderBrush="Gray"
+        BorderThickness="2"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center">
+
+    <Button.Content>
+        <Grid>
+            <!-- Show the image if selected -->
+            <Image Source="{Binding SelectedImage}" Stretch="UniformToFill"/>
+
+            <!-- Show "+" if no image -->
+            <TextBlock Text="+" 
+                       FontSize="48" 
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center"
+                       IsVisible="{Binding SelectedImage, Converter={StaticResource NullToBoolConverter}}"/>
+        </Grid>
+        </Button.Content>
+    </Button>
+
+        </StackPanel>
+    </Grid>
+
+</UserControl>

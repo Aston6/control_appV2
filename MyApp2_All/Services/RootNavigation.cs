@@ -27,6 +27,7 @@ public class RootNavigationService : IRootNavigationService
         RootNavigationConstants.ReportsView => ServiceLocator.Current.GetRequiredService<ReportsViewModel>(),
         RootNavigationConstants.MainView =>ServiceLocator.Current.GetRequiredService<MainViewModel>(),
         RootNavigationConstants.DashboardView=>ServiceLocator.Current.GetRequiredService<DashboardViewModel>(),
+        RootNavigationConstants.BuyListView=>ServiceLocator.Current.GetRequiredService<BuyListViewModel>(),
         
         _ => throw new Exception($"Unknown view: {view}")
     };

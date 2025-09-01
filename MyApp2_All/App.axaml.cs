@@ -27,6 +27,7 @@ public partial class App : Application
 
         services.AddSingleton<IRootNavigationService, RootNavigationService>();
         services.AddSingleton<IUserService, UserService>();
+        services.AddSingleton<IImagePickerService, ImagePickerService>();
 
         services.AddSingleton<MainWindowViewModel>();
         services.AddTransient<LoginViewModel>();
@@ -36,6 +37,7 @@ public partial class App : Application
         services.AddTransient<ReportsViewModel>();
         services.AddTransient<DashboardViewModel>();
         services.AddTransient<ControlPanelViewModel>();
+        services.AddTransient<BuyListViewModel>();
 
         var serviceProvider = services.BuildServiceProvider();
 

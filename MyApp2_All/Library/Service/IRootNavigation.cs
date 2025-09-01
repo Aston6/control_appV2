@@ -17,6 +17,7 @@ public static class RootNavigationConstants
     public const string ReportsView = "Reports";
     public const string MainView = "Main";
     public const string DashboardView = "Dashboard";
+    public const string BuyListView = "BuyList";
 }
 
 

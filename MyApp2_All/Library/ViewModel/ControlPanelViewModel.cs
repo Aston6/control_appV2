@@ -9,6 +9,9 @@ namespace MyApp2.ViewModels
 {
     public class ControlPanelViewModel : ViewModelBase
     {
+        /// <summary>
+        /// Represents the motion parameters used for controlling motion-related operations.
+        /// </summary>
         private MotionPara _motionPara = new MotionPara();
         
 
